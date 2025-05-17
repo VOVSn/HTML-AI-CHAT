@@ -353,6 +353,7 @@
             margin-bottom: 8px; 
             display: block; 
             background-color: #dcd7cd; /* Fallback bg for image loading */
+            transition: background-color 0.3s ease;
         }
         .message-image-fallback-icon {
             width: 40px; 
@@ -360,6 +361,7 @@
             fill: #847c6f; 
             margin-bottom: 8px;
             display: block;
+            transition: fill 0.3s ease;
         }
 
         .message.ai .message-content ul, .message.ai .message-content ol {
@@ -380,6 +382,27 @@
         .message.ai .message-content p:last-child {
             margin-bottom: 0;
         }
+        .message.ai .message-content code { /* Basic styling for inline code */
+            background-color: rgba(0,0,0,0.05);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+        }
+        .message.ai .message-content pre { /* Basic styling for code blocks */
+            background-color: rgba(0,0,0,0.05);
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 0.5em 0;
+        }
+        .message.ai .message-content pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 1em; /* Reset from inline */
+        }
+
 
         /* User message style */
         .message.user {
@@ -439,6 +462,7 @@
             color: #847c6f; 
             margin: 15px 0;
             font-style: italic;
+            transition: color 0.3s ease;
         }
 
 
@@ -499,6 +523,7 @@
             margin-bottom: 10px; 
             align-self: flex-start; 
             position: relative;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
         #imagePreview {
             display: block;
@@ -506,6 +531,7 @@
             max-height: 200px; /* Increased from 100px */
             border-radius: 8px;
             background-color: #dcd7cd; /* Fallback bg for image loading */
+            transition: background-color 0.3s ease;
         }
         #removeImageBtn {
             position: absolute;
@@ -716,6 +742,221 @@
             opacity: 0 !important;
         }
 
+
+        /* --- Dark Mode Styles --- */
+        body.dark-mode {
+            background-color: #2a2c31;
+        }
+
+        .dark-mode .chat-app {
+            background: linear-gradient(145deg, #3a3d42, #2f3136);
+            box-shadow: 15px 15px 30px #25272b, -15px -15px 30px #45494f;
+        }
+
+        .dark-mode .chat-header {
+            background: linear-gradient(145deg, #383b40, #2e3035);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dark-mode .agent-name { color: #e0e0e0; }
+        .dark-mode .agent-status { color: #a0a0a0; }
+        /* .agent-status.reachable/not-reachable colors are absolute, so they remain */
+
+        .dark-mode .header-icon-button {
+            background: linear-gradient(145deg, #36393f, #2c2e33);
+            box-shadow: 4px 4px 8px #232528, -4px -4px 8px #43474c;
+        }
+        .dark-mode .header-icon-button svg { fill: #b0b0b0; }
+        .dark-mode .header-icon-button:active {
+            box-shadow: inset 3px 3px 6px #232528, inset -3px -3px 6px #43474c;
+        }
+
+        .dark-mode .settings-panel {
+            background: linear-gradient(145deg, #3a3d42, #2f3136);
+            box-shadow: 8px 8px 16px #25272b, -8px -8px 16px #45494f;
+        }
+        .dark-mode .settings-label { color: #c0c0c0; }
+        .dark-mode .settings-group-title {
+            color: #909090;
+            border-bottom-color: #4a4d52;
+        }
+        .dark-mode .settings-input {
+            background: #303338;
+            color: #d0d0d0;
+            box-shadow: inset 2px 2px 4px #26282c, inset -2px -2px 4px #3a3c40;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .dark-mode .settings-input::placeholder { color: #707070; }
+        .dark-mode .settings-panel select.settings-input {
+             background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23B0B0B0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E');
+        }
+
+
+        .dark-mode .toggle-slider {
+            background: #2f3136;
+            box-shadow: inset 2px 2px 4px #25272b, inset -2px -2px 4px #45494f;
+        }
+        .dark-mode .toggle-slider:before {
+            background: linear-gradient(145deg, #404348, #303237);
+        }
+        .dark-mode input:checked + .toggle-slider {
+            background: linear-gradient(145deg, #527FFF, #4065CC); /* Using a blue accent for checked toggles in dark mode */
+        }
+        .dark-mode input:checked + .toggle-slider:before {
+            background: linear-gradient(145deg, #608BFF, #5075DD);
+        }
+
+        .dark-mode .settings-button {
+            background: linear-gradient(145deg, #36393f, #2c2e33);
+            box-shadow: 3px 3px 6px #232528, -3px -3px 6px #43474c;
+            color: #c0c0c0;
+        }
+        .dark-mode .settings-button:active {
+            box-shadow: inset 2px 2px 4px #232528, inset -2px -2px 4px #43474c;
+        }
+        .dark-mode .settings-button.danger {
+            background: linear-gradient(145deg, #5e3939, #4e2f2f);
+            box-shadow: 3px 3px 6px #3e2020, -3px -3px 6px #6e4848;
+            color: #f0b0b0;
+        }
+        .dark-mode .settings-button.danger:active {
+            box-shadow: inset 2px 2px 4px #3e2020, inset -2px -2px 4px #6e4848;
+        }
+
+        .dark-mode .status-text.checking { color: #a0a0a0; }
+        .dark-mode .status-text.success { color: #66bb6a; }
+        .dark-mode .status-text.error { color: #ef5350; }
+
+        .dark-mode .chat-messages {
+            background: linear-gradient(125deg, #33363b, #2b2d31);
+            box-shadow: inset 5px 5px 15px #232528, inset -5px -5px 15px #404449;
+        }
+        .dark-mode .message { color: #d0d0d0; } /* Default text color inside messages */
+        
+        .dark-mode .message-image-preview { background-color: #2b2d31; }
+        .dark-mode .message-image-fallback-icon { fill: #808080; }
+
+        .dark-mode .message.ai .message-content code {
+            background-color: #282a2e; /* Slightly darker than message bg */
+            color: #cccccc; 
+            border: 1px solid #3a3d42;
+        }
+        .dark-mode .message.ai .message-content pre {
+            background-color: #25272b; /* Even darker for block */
+            color: #cccccc;
+            border: 1px solid #3a3d42;
+        }
+        .dark-mode .message.ai .message-content pre code {
+            background-color: transparent;
+            border: none;
+        }
+
+
+        .dark-mode .message.user {
+            background: linear-gradient(145deg, #4a5058, #3e434a);
+            color: #e0e0e0;
+            box-shadow: 5px 5px 15px #303338, -5px -5px 15px #50555d;
+            border: 1px solid rgba(0,0,0, 0.3);
+        }
+        .dark-mode .message.ai {
+            background: linear-gradient(145deg, #3c3f45, #32353a);
+            color: #d0d0d0;
+            box-shadow: 5px 5px 15px #282a2e, -5px -5px 15px #484c52;
+            border: 1px solid rgba(0,0,0, 0.2);
+        }
+        .dark-mode .message-time { color: #808080; }
+        .dark-mode .system-message { color: #909090; }
+        
+        .dark-mode .date-separator { color: #808080; }
+        .dark-mode .date-separator:before, .dark-mode .date-separator:after {
+            border-bottom-color: #4a4d52;
+        }
+
+        .dark-mode .chat-input-area {
+            background: linear-gradient(145deg, #383b40, #2e3035);
+            border-top: 1px solid rgba(0,0,0, 0.2);
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+        }
+        .dark-mode #imagePreviewContainer {
+            background: #303338;
+            box-shadow: inset 1px 1px 3px #26282c, inset -1px -1px 3px #3a3c40;
+        }
+        .dark-mode #imagePreview { background-color: #2b2d31; }
+        .dark-mode #removeImageBtn {
+            background: #383b40;
+            color: #d48075;
+            box-shadow: 2px 2px 5px #232528, -2px -2px 5px #43474c;
+        }
+        .dark-mode #removeImageBtn:active {
+            box-shadow: inset 1px 1px 2px #232528, inset -1px -1px 2px #43474c;
+        }
+
+        .dark-mode .circle-button {
+            background: linear-gradient(145deg, #36393f, #2c2e33);
+            box-shadow: 4px 4px 8px #232528, -4px -4px 8px #43474c;
+            border: 1px solid rgba(0,0,0, 0.2);
+        }
+        .dark-mode .circle-button:active {
+            box-shadow: inset 3px 3px 6px #232528, inset -3px -3px 6px #43474c;
+        }
+        .dark-mode .circle-button:disabled {
+            box-shadow: inset 2px 2px 4px #232528, inset -2px -2px 4px #43474c;
+        }
+        .dark-mode .attachment-icon svg { fill: #a0a0a0; }
+        
+        .dark-mode .chat-input {
+            background: #303338;
+            color: #d0d0d0;
+            box-shadow: inset 4px 4px 8px #26282c, inset -4px -4px 8px #3a3c40;
+            border: 1px solid rgba(0,0,0, 0.1);
+        }
+        .dark-mode .chat-input::placeholder { color: #808080; }
+        
+        .dark-mode .send-button {
+            background: linear-gradient(145deg, #4a5058, #3e434a);
+            box-shadow: 4px 4px 8px #303338, -4px -4px 8px #50555d;
+            border: 1px solid rgba(0,0,0, 0.3);
+        }
+        .dark-mode .send-button:active {
+            box-shadow: inset 3px 3px 6px #303338, inset -3px -3px 6px #50555d;
+        }
+        .dark-mode .send-button:disabled {
+            box-shadow: inset 2px 2px 4px #232528, inset -2px -2px 4px #43474c;
+        }
+        .dark-mode .send-icon { border-left-color: #d0d0d0; }
+
+        .dark-mode .chat-messages::-webkit-scrollbar-thumb, 
+        .dark-mode .settings-panel-content::-webkit-scrollbar-thumb {
+            background-color: #50555d;
+        }
+        .dark-mode .chat-messages::-webkit-scrollbar-thumb:hover,
+        .dark-mode .settings-panel-content::-webkit-scrollbar-thumb:hover {
+            background-color: #60666e;
+        }
+
+        /* Dark Mode Shimmer */
+        .dark-mode .chat-app::before {
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.015) 25%, /* Lighter, less saturated shimmer */
+                rgba(255, 255, 255, 0.03) 50%,
+                rgba(255, 255, 255, 0.015) 75%,
+                transparent 100%
+            );
+        }
+
+        .dark-mode .circle-button::before,
+        .dark-mode .send-button::before,
+        .dark-mode .header-icon-button::before,
+        .dark-mode .settings-button::before {
+            background: linear-gradient(
+                135deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.08) 50%, /* Lighter shimmer for buttons */
+                transparent 70%
+            );
+        }
+
     </style>
 </head>
 <body>
@@ -740,6 +981,13 @@
         <!-- Settings Panel (Popup) - Combined View -->
         <div class="settings-panel" id="settingsPanel">
             <div class="settings-panel-content">
+                <div class="settings-row">
+                    <div class="settings-label" data-translate-key="darkModeLabel">Dark Mode</div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
                 <div class="settings-row">
                     <div class="settings-label" data-translate-key="streamResponsesLabel">Stream Responses</div>
                     <label class="toggle-switch">
@@ -768,7 +1016,7 @@
                 </div>
                 <div class="settings-row">
                     <label class="settings-label" for="ollamaModel" data-translate-key="ollamaModelLabel">Model Name</label>
-                    <input type="text" id="ollamaModel" class="settings-input" placeholder="llama3:8b">
+                    <input type="text" id="ollamaModel" class="settings-input" placeholder="gemma3:4b">
                 </div>
                 <div class="settings-row">
                     <label class="settings-label" for="ollamaTemperature" data-translate-key="ollamaTemperatureLabel">Temperature</label>
@@ -827,6 +1075,7 @@
                 agentStatusTyping: "Typing...",
                 agentStatusNotReachable: "Not Reachable",
                 settingsTitle: "Settings", 
+                darkModeLabel: "Dark Mode",
                 streamResponsesLabel: "Stream Responses",
                 markdownLabel: "Use Markdown",
                 ollamaStatusTitle: "Ollama Status",
@@ -838,7 +1087,7 @@
                 chatDataTitle: "Chat Data",
                 clearChatHistoryBtn: "Clear Chat History",
                 ollamaEndpointPlaceholder: "http://localhost:11434/api/generate",
-                ollamaModelPlaceholder: "llama3:8b", 
+                ollamaModelPlaceholder: "gemma3:4b", 
                 ollamaStatusChecking: "Checking...",
                 ollamaStatusRunning: "Ollama Running",
                 ollamaStatusOKUnexpected: "Reachable (OK, unexpected content)",
@@ -867,6 +1116,7 @@
         // --- DOM Elements ---
         const settingsButton = document.getElementById('settingsButton');
         const settingsPanel = document.getElementById('settingsPanel');
+        const darkModeToggle = document.getElementById('darkModeToggle');
         const markdownToggle = document.getElementById('markdownToggle');
         const streamResponsesToggle = document.getElementById('streamResponsesToggle');
         const body = document.body;
@@ -895,6 +1145,7 @@
         const DEFAULT_OLLAMA_TEMPERATURE = 0.3;
         const CHAT_HISTORY_KEY = 'AiChatHistory';
         const MARKDOWN_ENABLED_KEY = 'aiChatMarkdownEnabled';
+        const DARK_MODE_KEY = 'aiChatDarkModeEnabled';
         const MAX_HISTORY_FOR_PROMPT = 6; 
         const OLLAMA_CHECK_INTERVAL = 60000; 
         const PREVIEW_IMAGE_MAX_DIMENSION_PX = 300; // For chat history display
@@ -1025,6 +1276,24 @@
             button.addEventListener('mouseleave', () => button.classList.remove('active')); // Also remove on mouse leave
         });
 
+        // --- Dark Mode ---
+        function setDarkMode(enabled) {
+            if (enabled) {
+                body.classList.add('dark-mode');
+                localStorage.setItem(DARK_MODE_KEY, 'true');
+                if (darkModeToggle) darkModeToggle.checked = true;
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem(DARK_MODE_KEY, 'false');
+                if (darkModeToggle) darkModeToggle.checked = false;
+            }
+        }
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('change', function() {
+                setDarkMode(this.checked);
+            });
+        }
+
 
         if (markdownToggle) {
             markdownToggle.addEventListener('change', function() {
@@ -1038,7 +1307,7 @@
                 ollamaEndpointInput.value = localStorage.getItem(OLLAMA_ENDPOINT_KEY) || 'http://localhost:11434/api/generate';
             }
             if (ollamaModelInput) {
-                ollamaModelInput.value = localStorage.getItem(OLLAMA_MODEL_KEY) || 'llama3:8b'; 
+                ollamaModelInput.value = localStorage.getItem(OLLAMA_MODEL_KEY) || 'gemma3:4b'; 
             }
             if (ollamaTemperatureInput) {
                 const storedTemp = localStorage.getItem(OLLAMA_TEMPERATURE_KEY);
@@ -1528,7 +1797,7 @@
 
         async function callOllamaApi(promptText, onTokenCallback, imageBase64Payload = null) { 
             const endpoint = (ollamaEndpointInput ? ollamaEndpointInput.value : null) || 'http://localhost:11434/api/generate';
-            const model = (ollamaModelInput ? ollamaModelInput.value : null) || 'llama3:8b';
+            const model = (ollamaModelInput ? ollamaModelInput.value : null) || 'gemma3:4b';
             const stream = streamResponsesToggle ? streamResponsesToggle.checked : true;
 
             let temperatureValue = DEFAULT_OLLAMA_TEMPERATURE;
@@ -1734,6 +2003,11 @@
         
         // --- Initial Application Load ---
         function initializeApp() {
+            // Dark Mode Setting
+            const savedDarkModePref = localStorage.getItem(DARK_MODE_KEY);
+            setDarkMode(savedDarkModePref === 'true'); 
+
+            // Markdown Setting
             if (markdownToggle) {
                 const savedMarkdownPref = localStorage.getItem(MARKDOWN_ENABLED_KEY);
                 markdownToggle.checked = savedMarkdownPref === null ? true : (savedMarkdownPref === 'true'); 
@@ -1745,12 +2019,18 @@
 
             if (typeof marked === 'undefined') {
                 console.warn("Marked.js library is not loaded. Markdown formatting will fallback to simple newline-to-br conversion for AI messages.");
-                if(markdownToggle) markdownToggle.checked = false; 
+                if(markdownToggle) {
+                    markdownToggle.checked = false; 
+                    markdownToggle.disabled = true; // Optionally disable if lib not found
+                }
             } else {
                 // Configure marked for GFM line breaks (single newline = <br>)
                 marked.setOptions({
                   breaks: true,
-                  gfm: true
+                  gfm: true,
+                  pedantic: false, // Be less strict
+                  smartLists: true,
+                  smartypants: false
                 });
             }
             
